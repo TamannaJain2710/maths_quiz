@@ -29,8 +29,9 @@ function draw(){
         }
     } else if(gameState === start){
         background("pink");
-        textSize(10);
-        text("Enter Number 1:");
+        textSize(20);
+        text("Enter Number 1:",displayWidth/2+100,displayHeight/2+10);
+
     }   
     drawSprites();
 }
