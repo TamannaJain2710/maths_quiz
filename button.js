@@ -5,6 +5,6 @@ class Button{
         this.value = value;
         this.x =x;
         this.y = y;
-        this.button.style('background', 'lightgrey');
+        this.button.style('background', 'lightblue');
     }
 }
