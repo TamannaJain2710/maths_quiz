@@ -4,10 +4,14 @@ const Bodies = Matter.Bodies;
 const Constraint = Matter.Constraint;
 
 var engine, world;
-var lp,EB;
+var lp,solve,calculate,check;
+var q;
 var start = 2;
 var loading = 1;
 var gameState = loading;
+var one;
+var two ;
+var no = 0;
 function preload(){
     lp = loadImage("loadingpic.jpg");
 }
@@ -16,11 +20,13 @@ function setup(){
     createCanvas(displayWidth-20,displayHeight-30);
     engine = Engine.create();
     world = engine.world;
-    //EB = new Button('Start',displayWidth/2,displayHeight/2 + 20)
+    background("yellow");
 }
 
 function draw(){
     Engine.update(engine);
+    one= Math.round(random(1,1000));
+    two = Math.round(random(1,1000));
     
     if (gameState === loading){
         background(lp);
@@ -28,10 +34,10 @@ function draw(){
             gameState = start
         }
     } else if(gameState === start){
-        background("pink");
-        textSize(20);
-        text("Enter Number 1:",displayWidth/2+100,displayHeight/2+10);
-
-    }   
+        solve = new Button('Solve',displayWidth/2,displayHeight/2 - 30);
+        calculate = new Button('Calculate',displayWidth/2 - 20,displayHeight/2 + 30)
+        solve.solving();
+        calculate.calculating();
+    }  
     drawSprites();
 }
