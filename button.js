@@ -9,7 +9,7 @@ class Button{
         this.check.position(displayWidth/2+50,displayHeight/2+80);
         this.check.style('background', 'lightgrey');
         this.check.style('font-size', '20px'); 
-        this.input = createInput('answer')
+        this.input = createInput("answer")
         this.input.position(displayWidth/2+50,displayHeight/2+40);
         this.input.style('background', 'white');
     }
