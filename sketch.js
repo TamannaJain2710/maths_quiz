@@ -4,14 +4,14 @@ const Bodies = Matter.Bodies;
 const Constraint = Matter.Constraint;
 
 var engine, world;
-var lp,solve,calculate,check;
-var q;
+var lp,solve,check;
+var q,check;
+var signs = ['+','-','*','/'];
 var start = 2;
 var loading = 1;
 var gameState = loading;
 var one;
 var two ;
-var no = 0;
 function preload(){
     lp = loadImage("loadingpic.jpg");
 }
@@ -21,23 +21,35 @@ function setup(){
     engine = Engine.create();
     world = engine.world;
     background("yellow");
+    check = new Button();
+    one= Math.round(random(1,1000));
+    two = Math.round(random(1,1000));
+    sign = random(signs)
 }
 
 function draw(){
     Engine.update(engine);
-    one= Math.round(random(1,1000));
-    two = Math.round(random(1,1000));
-    
+
     if (gameState === loading){
         background(lp);
         if(frameCount % 30 == 0 ){
             gameState = start
         }
     } else if(gameState === start){
-        solve = new Button('Solve',displayWidth/2,displayHeight/2 - 30);
-        calculate = new Button('Calculate',displayWidth/2 - 20,displayHeight/2 + 30)
-        solve.solving();
-        calculate.calculating();
+        background("yellow");
+        textSize(20);
+        text(one + sign + two ,displayWidth/2+50,displayHeight/2+10);
+        if(sign === '+'){
+            q= one+two
+        } else if ( sign === '-'){
+            q= one-two
+        } else if (sign === '*'){
+            q= one*two
+        } else if(sign === '/'){
+            q= one/two
+        }
+        check.solving();
+        
     }  
     drawSprites();
 }
