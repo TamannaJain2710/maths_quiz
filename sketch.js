@@ -5,7 +5,7 @@ const Constraint = Matter.Constraint;
 
 var engine, world;
 var lp,solve,check;
-var q,check;
+var q,input;
 var signs = ['+','-','*','/'];
 var start = 2;
 var loading = 1;
@@ -21,7 +21,6 @@ function setup(){
     engine = Engine.create();
     world = engine.world;
     background("yellow");
-    check = new Button();
     one= Math.round(random(1,1000));
     two = Math.round(random(1,1000));
     sign = random(signs)
@@ -48,8 +47,8 @@ function draw(){
         } else if(sign === '/'){
             q= one/two
         }
+        check = new Button();
         check.solving();
-        
     }  
     drawSprites();
 }
