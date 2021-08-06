@@ -6,8 +6,9 @@ const Constraint = Matter.Constraint;
 var engine, world;
 var lp,solve,check;
 var q,input;
-var signs = ['+','-','*','/'];
+var signs = ['+','-','*'];
 var start = 2;
+var score = 0;
 var loading = 1;
 var gameState = loading;
 var one;
@@ -21,9 +22,8 @@ function setup(){
     engine = Engine.create();
     world = engine.world;
     background("yellow");
-    one= Math.round(random(1,1000));
-    two = Math.round(random(1,1000));
     sign = random(signs)
+    check = new Button();
 }
 
 function draw(){
@@ -37,17 +37,21 @@ function draw(){
     } else if(gameState === start){
         background("yellow");
         textSize(20);
+        
+        one= Math.round(random(1,1000));
+        two = Math.round(random(1,1000));
+        noLoop();
+        text("score" + " "+ score , displayWidth/2+10,20);
         text(one + sign + two ,displayWidth/2+50,displayHeight/2+10);
+        check.input.show();
+        check.check.show();
         if(sign === '+'){
             q= one+two
         } else if ( sign === '-'){
             q= one-two
         } else if (sign === '*'){
             q= one*two
-        } else if(sign === '/'){
-            q= one/two
-        }
-        check = new Button();
+        } 
         check.solving();
     }  
     drawSprites();
